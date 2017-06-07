@@ -233,11 +233,16 @@
                   }
                 ],
                 "readinessProbe": {
-                  "timeoutSeconds": 3,
+                  "timeoutSeconds": 1000,
                   "initialDelaySeconds": 3,
-                  "httpGet": {
-                    "path": "/pagecount",
-                    "port": 8080
+                  "periodSeconds": 10,
+                  "exec": {
+                    "command": [
+                      "/bin/sh",
+                      "-i",
+                      "-c",
+                      "node test.js"
+                    ]
                   }
                 },
                 "livenessProbe": {
